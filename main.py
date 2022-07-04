@@ -1,4 +1,7 @@
 import enchant
+import json
+
+from rx import merge
 district_list = enchant.PyPWL('districts_of_Nepal.txt')
 
 data = [{'Kathmandu':0.8, 'Dhanusa':0.85, 'Kavre palanchowk':0.75},
@@ -13,4 +16,5 @@ for items in data:
         else:
             merged[k] = [v]
 
-print(merged)
+with open('output.json', 'w') as f:
+    f.write(json.dumps(merged))
